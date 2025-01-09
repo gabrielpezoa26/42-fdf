@@ -6,7 +6,7 @@
 #    By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/09 14:04:57 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/01/09 14:05:47 by gcesar-n         ###   ########.fr        #
+#    Updated: 2025/01/09 19:15:39 by gcesar-n         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIBS = -lXext -lX11 -lm
 
 LIBFT = ./libft/libft.a
 
-SRC = fdf.c\
+SRC = fdf.c fdf_utils.c\
 
 OBJ = $(SRC:.c=.o)
 

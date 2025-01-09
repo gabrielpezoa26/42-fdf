@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 18:36:28 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/09 19:03:45 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/01/09 19:15:02 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,27 @@ void	free_memory(int **matrix, int row)
 	}
 	free (matrix);
 	return ;
+}
+
+int	col_counter(char *line)
+{
+	int	x;
+
+	x = 0;
+	while (*line != '\0')
+	{
+		if (ft_isdigit(*line) != 0)
+		{
+			x++;
+			while (ft_isdigit(*line) != 0)
+			{
+				line++;
+			}
+		}
+		else if (ft_isdigit(*line) == 0)
+		{
+			line++;
+		}
+	}
+	return (x);
 }

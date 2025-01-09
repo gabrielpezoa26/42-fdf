@@ -6,56 +6,11 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:24:58 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/09 19:11:55 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/01/09 19:15:11 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-static int	col_counter(char *line)
-{
-	int	x;
-
-	x = 0;
-	while (*line != '\0')
-	{
-		if (ft_isdigit(*line) != 0)
-		{
-			x++;
-			while (ft_isdigit(*line) != 0)
-			{
-				line++;
-			}
-		}
-		else if (ft_isdigit(*line) == 0)
-		{
-			line++;
-		}
-	}
-	return (x);
-}
-
-/*int	**create_matrix(int line_amount, int col)
-{
-	int	**matrix;
-	int	i;
-
-	i = 0;
-	matrix = (int **)malloc(line_amount * sizeof(int *));
-	if (matrix == NULL)
-		return (NULL);
-	while (i < line_amount)
-	{
-		matrix[i] = (int *)malloc(col * sizeof(int));
-		if (matrix[i] == NULL)
-		{
-			free_memory(matrix, line_amount);
-			return (NULL);
-		}
-		i++;
-	}
-	return (matrix);
-}*/
 
 static char	**populate_matrix(int line_amount, char **matrix)
 {
