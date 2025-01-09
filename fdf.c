@@ -6,15 +6,11 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:24:58 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/09 16:45:51 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/01/09 17:30:22 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <math.h>
-#include "libft/libft.h"
 #include "fdf.h"
-#include <string.h>
 
 void	free_memory(int **matrix, int row)
 {
@@ -27,7 +23,7 @@ void	free_memory(int **matrix, int row)
 		i++;
 	}
 	free (matrix);
-	return;
+	return ;
 }
 
 int	col_counter(char *line)
@@ -41,12 +37,16 @@ int	col_counter(char *line)
 		{
 			x++;
 			while (ft_isdigit(*line) != 0)
+			{
 				line++;
+			}
 		}
-		else
+		else if (ft_isdigit(*line) == 0)
+		{
 			line++;
+		}
 	}
-	return (x);  //teste git
+	return (x);
 }
 
 int	**create_matrix(int line_amount, int col)
@@ -71,6 +71,30 @@ int	**create_matrix(int line_amount, int col)
 	return (matrix);
 }
 
+char	**populate_matrix(int line_amount, char *matrix)
+{
+	int		i;
+	int		j;
+	char	*result[256];
+
+	i = 0;
+	j = 0;
+	while (i < line_amount)
+	{
+		if (matrix[i][j] == '\n')
+		{
+			j++;
+		}
+		else if (matrix[i][j] == '\0')
+		{
+			return (matrix);
+		}
+		result[i][j] = matrix[i][j];
+		i++;
+	}
+	return (&matrix);
+}
+
 int	main(int argc, char *argv[])
 {
 	int		fd;
@@ -91,6 +115,7 @@ int	main(int argc, char *argv[])
 		row++;
 		free(mango_loko);
 		mango_loko = get_next_line(fd);
+		ft_printf("%d \n", populate_matrix(4, mango_loko));
 	}
 	ft_printf("%d %d \n", col, row);
 	close (fd);
