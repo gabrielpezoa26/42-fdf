@@ -1,2 +1,5 @@
 fdf
 .vscode/
+*.o
+.fdf
+.gitignore
