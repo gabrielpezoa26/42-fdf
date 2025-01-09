@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:24:58 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/09 16:25:00 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/01/09 16:45:51 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	col_counter(char *line)
 		else
 			line++;
 	}
-	return (x);
+	return (x);  //teste git
 }
 
 int	**create_matrix(int line_amount, int col)
