@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:24:58 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/09 23:20:25 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/10 15:43:44 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	**populate_matrix(int line_amount, char **matrix)
 		result[i][j] = matrix[i][j];
 		i++;
 	}
-	return (result);
+	return (result); //teste git dnvvv
 }
 
 int	main(int argc, char **argv)
