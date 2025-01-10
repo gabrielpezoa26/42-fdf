@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:24:58 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/10 15:45:00 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:47:19 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	**populate_matrix(int line_amount, char **matrix)
 		result[i][j] = matrix[i][j];
 		i++;
 	}
-	return (result); //teste git dnvvvvvv
+	return (result);
 }
 
 int	main(int argc, char **argv)

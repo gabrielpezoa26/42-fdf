@@ -6,34 +6,38 @@
 #    By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/09 14:04:57 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/01/09 19:15:39 by gcesar-n         ###   ########.fr        #
+#    Updated: 2025/01/10 16:51:08 by gcesar-n         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
+
+CC = cc
 
 MLX = -L/usr/local/lib -lmlx
 LIBS = -lXext -lX11 -lm
 
 LIBFT = ./libft/libft.a
 
-SRC = fdf.c fdf_utils.c\
+SRC = ./src/fdf.c ./src/fdf_utils.c
 
 OBJ = $(SRC:.c=.o)
 
-CC = cc
-
-CFLAGS = -Wall -Wextra -Werror -I./libft -I./gnl
+CFLAGS = -Wall -Wextra -Werror -I./libft -I./gnl -I./includes
 
 all: $(NAME)
+	@echo "compiling aaaaaaaaa"
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o fdf $(OBJ) $(LIBFT) $(LIBS) $(MLX)
 
 clean:
+	@echo "cleaningggggg"
 	rm -f $(OBJ)
 
 fclean: clean
+	@echo "full cleannnnn"
 	rm -f fdf
 
 re: fclean all
+	@echo "cleaning and compilingggg"
