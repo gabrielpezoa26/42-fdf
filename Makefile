@@ -6,7 +6,7 @@
 #    By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/09 14:04:57 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/01/10 16:51:08 by gcesar-n         ###   ########.fr        #
+#    Updated: 2025/01/10 16:55:45 by gcesar-n         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC = ./src/fdf.c ./src/fdf_utils.c
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -I./libft -I./gnl -I./includes
+CFLAGS = -Wall -Wextra -Werror -I./libft -I./includes
 
 all: $(NAME)
 	@echo "compiling aaaaaaaaa"
