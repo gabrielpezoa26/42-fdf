@@ -6,15 +6,17 @@
 #    By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/09 14:04:57 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/01/13 11:05:07 by gcesar-n         ###   ########.fr        #
+#    Updated: 2025/01/13 14:06:08 by gcesar-n         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I./libft -I./includes
-LDFLAGS = -L/usr/local/lib -lmlx -framework OpenGL -framework AppKit
+
+CFLAGS = -Wall -Wextra -Werror -I./libft -I./includes -I./MLX42/include/MLX42
+
+LDFLAGS = -L./MLX42/lib -lmlx42 -L/usr/local/lib -lXext -lX11 -lm -framework OpenGL -framework AppKit
 
 LIBFT = ./libft/libft.a
 
