@@ -3,34 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   controls.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 22:12:25 by gabriel           #+#    #+#             */
-/*   Updated: 2025/01/12 23:25:57 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/13 13:54:01 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	handle_keypress(int keycode, t_mlx *mlx)
+void	handle_keypress(mlx_key_data_t keydata, void *param)
 {
-	if (keycode == 65307)  //esc
+	t_mlx *mlx = (t_mlx *)param;
+
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
-		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
+		mlx_terminate(mlx->mlx_ptr);
 		exit(0);
 	}
-	return (0);
 }
 
-int	handle_close(t_mlx *mlx)
+void	handle_close(void *param)
 {
-	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);  //mouse
+	t_mlx *mlx = (t_mlx *)param;
+
+	mlx_terminate(mlx->mlx_ptr);
 	exit(0);
-	return (0);
 }
 
 void	setup_controls(t_mlx *mlx)
 {
-	mlx_hook(mlx->win_ptr, 17, 0, handle_close, mlx);
-	mlx_key_hook(mlx->win_ptr, handle_keypress, mlx);
+	mlx_close_hook(mlx->mlx_ptr, handle_close, mlx); 
+	mlx_key_hook(mlx->mlx_ptr, handle_keypress, mlx);
 }

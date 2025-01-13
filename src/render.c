@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:59:41 by gabriel           #+#    #+#             */
-/*   Updated: 2025/01/12 22:50:06 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/13 13:16:10 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,21 @@ t_mlx	*init_mlx(int width, int height, char *title)
 	mlx = malloc(sizeof(t_mlx));
 	if (!mlx)
 		handle_error("Error: Failed to allocate memory for MLX.\n");
-	mlx->mlx_ptr = mlx_init();
+	mlx->mlx_ptr = mlx_init(width, height, title, true);
 	if (!mlx->mlx_ptr)
 		handle_error("Error: Failed to initialize MLX.\n");
-	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, width, height, title);
-	if (!mlx->win_ptr)
-		handle_error("Error: Failed to create MLX window.\n");
 	mlx->img_ptr = mlx_new_image(mlx->mlx_ptr, width, height);
 	if (!mlx->img_ptr)
 		handle_error("Error: Failed to create MLX image.\n");
-	mlx->img_data = mlx_get_data_addr(
-			mlx->img_ptr, 
-			&mlx->bpp, 
-			&mlx->line_len, 
-			&mlx->endian
-	);
+
 	return (mlx);
 }
 
 void	render_map(t_map *map, t_mlx *mlx)
 {
-	(void)map;
-	(void)mlx;
+	if (!map || !mlx)
+		return ;
+	mlx_image_to_window(mlx->mlx_ptr, mlx->img_ptr, 0, 0);
 	ft_printf("Rendering map...\n");
+	mlx_loop(mlx->mlx_ptr);
 }
-
-

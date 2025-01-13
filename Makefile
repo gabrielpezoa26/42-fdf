@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
+#    By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/09 14:04:57 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/01/12 23:27:55 by gabriel          ###   ########.fr        #
+#    Updated: 2025/01/13 11:05:07 by gcesar-n         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,11 @@ NAME = fdf
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./libft -I./includes
+LDFLAGS = -L/usr/local/lib -lmlx -framework OpenGL -framework AppKit
 
 LIBFT = ./libft/libft.a
 
-LIBS = -L/usr/local/lib -lmlx -lXext -lX11 -lm
+LIBS = -L/usr/local/lib -lXext -lX11 -lm
 
 SRC =	./src/main.c \
 		./src/utils.c \
