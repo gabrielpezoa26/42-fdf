@@ -6,7 +6,7 @@
 #    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/09 14:04:57 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/01/12 23:01:38 by gabriel          ###   ########.fr        #
+#    Updated: 2025/01/12 23:03:25 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,9 +45,8 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	@echo "full cleaningggg"
-	rm -f $(NAME)
-	make fclean -C ./libft
+	@echo "full cleannnnn"
+	rm -f fdf
 
 re: fclean all
 	@echo "cleaning and recompilingggg"
