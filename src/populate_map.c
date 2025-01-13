@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:38:59 by gabriel           #+#    #+#             */
-/*   Updated: 2025/01/12 21:50:52 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/12 22:38:31 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_free_split(char **split)
 	int	i;
 
 	if (!split)
-		return;
+		return ;
 	i = 0;
 	while (split[i])
 	{
@@ -69,11 +69,13 @@ void	populate_matrix(t_map *map, char *filename)
 	if (fd < 0)
 		handle_error("Error: Unable to open file.\n");
 	row = 0;
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		process_line(map, line, row);
 		free(line);
 		row++;
+		line = get_next_line(fd);
 	}
 	close(fd);
 }

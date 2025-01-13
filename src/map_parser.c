@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:24:58 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/12 21:57:19 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/12 22:40:09 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static int	read_map_file(t_map *map, char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		handle_error("Error: Unable to open file.\n");
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
 		if (map->rows == 0)
 			map->cols = ft_count_words(line, ' ');
@@ -37,10 +38,12 @@ static int	read_map_file(t_map *map, char *filename)
 			check_column_consistency(map, line);
 		map->rows++;
 		free(line);
+		line = get_next_line(fd);
 	}
 	close(fd);
 	return (0);
 }
+
 
 t_map	*parse_map(char *filename)
 {

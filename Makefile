@@ -6,19 +6,17 @@
 #    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/09 14:04:57 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/01/12 22:17:19 by gabriel          ###   ########.fr        #
+#    Updated: 2025/01/12 23:01:38 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
 CC = cc
-
-MLX = -L/usr/local/lib -lmlx
-
-LIBS = -L/usr/local/lib -lmlx -lXext -lX11 -lm
+CFLAGS = -Wall -Wextra -Werror -I./libft -I./includes
 
 LIBFT = ./libft/libft.a
+LIBS = -L/usr/local/lib -lmlx -lXext -lX11 -lm
 
 SRC =	./src/main.c \
 		./src/utils.c \
@@ -30,21 +28,26 @@ SRC =	./src/main.c \
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -I./libft -I./includes
+.PHONY: all clean fclean re
 
 all: $(NAME)
-	@echo "compiling aaaaaaaaa"
+	@echo "compilingggg"
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o fdf $(OBJ) $(LIBFT) $(LIBS) $(MLX)
+$(NAME): $(OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(LIBS)
+
+$(LIBFT):
+	@echo "buildingggg"
+	make -C ./libft
 
 clean:
-	@echo "cleaningggggg"
+	@echo "cleaningggg"
 	rm -f $(OBJ)
 
 fclean: clean
-	@echo "full cleannnnn"
-	rm -f fdf
+	@echo "full cleaningggg"
+	rm -f $(NAME)
+	make fclean -C ./libft
 
 re: fclean all
-	@echo "cleaning and compilingggg"
+	@echo "cleaning and recompilingggg"
