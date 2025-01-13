@@ -1,3 +1,9 @@
 *.o
+
 a.out
+
 MLX42/.git
+
+.vscode/
+
+libft/libft.a

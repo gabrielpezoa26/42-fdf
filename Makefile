@@ -6,7 +6,7 @@
 #    By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/09 14:04:57 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/01/13 14:19:27 by gcesar-n         ###   ########.fr        #
+#    Updated: 2025/01/13 14:29:06 by gcesar-n         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,32 +38,30 @@ all: $(NAME)
 
 $(NAME): libmlx $(LIBFT) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(LIBS)
-	@echo "Linking complete: $(NAME)"
+	@echo "linkingggg $(NAME)"
 
 libmlx:
 	@cmake -DDEBUG=1 $(MLX42_DIR) -B $(MLX42_BUILD)
 	@make -C $(MLX42_BUILD) -j4
-	@echo "MLX42 build complete."
+	@echo "mlx42 builttttt"
 
 $(LIBFT):
 	@make -C $(LIBFT_DIR) all
-	@echo "Libft build complete."
+	@echo "libft builtttt"
 
 %.o: %.c
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@echo "Compiling: $<"
+	@echo "compilinggg $<"
 
 clean:
 	@rm -rf $(OBJS)
 	@make clean -C $(LIBFT_DIR)
 	@rm -rf $(MLX42_BUILD)
-	@echo "Cleanup complete."
+	@echo "cleaningggg"
 
 fclean: clean
 	@rm -f $(NAME)
 	@make fclean -C $(LIBFT_DIR)
-	@echo "Full cleanup complete."
+	@echo "full cleaningggg"
 
 re: fclean all
-
-.PHONY: all clean fclean re libmlx
