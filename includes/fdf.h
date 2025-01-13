@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/12 22:08:17 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/12 22:16:27 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,10 @@ int		col_counter(char *line);
 void	ft_free_split(char **split);
 void	render_map(t_map *map, t_mlx *mlx);
 t_mlx	*init_mlx(int width, int height, char *title);
+
+//controls
+void setup_controls(t_mlx *mlx);
+int handle_close(t_mlx *mlx);
+int handle_keypress(int keycode, t_mlx *mlx);
+
 #endif

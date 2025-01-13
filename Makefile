@@ -6,7 +6,7 @@
 #    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/09 14:04:57 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/01/12 22:12:26 by gabriel          ###   ########.fr        #
+#    Updated: 2025/01/12 22:17:19 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC =	./src/main.c \
 		./src/map_parser.c \
 		./src/error_handler.c \
 		./src/populate_map.c \
-		./src/render.c \ 
+		./src/render.c \
 		./src/controls.c
 
 OBJ = $(SRC:.c=.o)
