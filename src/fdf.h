@@ -6,13 +6,12 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/13 14:19:45 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/01/13 15:05:49 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-
 
 # include <math.h>
 # include <fcntl.h>
@@ -36,7 +35,7 @@ typedef struct s_map
 
 typedef struct s_mlx
 {
-	mlx_t	*mlx_ptr;
+	mlx_t		*mlx_ptr;
 	mlx_image_t	*img_ptr;
 }	t_mlx;
 
