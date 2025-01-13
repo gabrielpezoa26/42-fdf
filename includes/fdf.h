@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/12 22:56:06 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/12 23:05:19 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 # include "../libft/libft.h"
 
 //            STRUCTS               //
-
+/*
 typedef struct s_point
 {
 	float	x;
 	float	y;
-}	t_point;
+}	t_point;*/
 
 typedef struct s_point3d
 {

@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 22:12:25 by gabriel           #+#    #+#             */
-/*   Updated: 2025/01/12 22:50:16 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/12 23:25:57 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	handle_keypress(int keycode, t_mlx *mlx)
 {
-	if (keycode == 65307)
+	if (keycode == 65307)  //esc
 	{
 		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
 		exit(0);
@@ -24,7 +24,7 @@ int	handle_keypress(int keycode, t_mlx *mlx)
 
 int	handle_close(t_mlx *mlx)
 {
-	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
+	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);  //mouse
 	exit(0);
 	return (0);
 }
