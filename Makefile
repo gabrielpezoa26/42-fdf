@@ -6,7 +6,7 @@
 #    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/09 14:04:57 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/01/11 16:50:07 by gabriel          ###   ########.fr        #
+#    Updated: 2025/01/12 21:54:30 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,11 @@ LIBS = -lXext -lX11 -lm
 
 LIBFT = ./libft/libft.a
 
-SRC = ./src/fdf.c ./src/fdf_utils.c
+SRC =	./src/main.c \
+		./src/utils.c \
+		./src/map_parser.c \
+		./src/error_handler.c \
+		./src/populate_map.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -6,45 +6,64 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 18:36:28 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/11 17:08:43 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/12 21:56:17 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	free_memory(int **matrix, int row)
+void	free_memory(t_map *map)
 {
 	int	i;
 
+	if (!map || !map->grid)
+		return;
 	i = 0;
-	while (i < row)
+	while (i < map->rows)
 	{
-		free(matrix[i]);
+		free(map->grid[i]);
 		i++;
 	}
-	free (matrix);
-	return ;
+	free(map->grid);
+	free(map);
 }
 
 int	col_counter(char *line)
 {
-	int	x;
+	int	count;
 
-	x = 0;
-	while (*line != '\0')
+	count = 0;
+	while (*line)
 	{
-		if (ft_isdigit(*line) != 0)
+		if (ft_isdigit(*line) || *line == '-')
 		{
-			x++;
-			while (ft_isdigit(*line) != 0)
-			{
+			count++;
+			while (ft_isdigit(*line) || *line == '-')
 				line++;
-			}
 		}
-		else if (ft_isdigit(*line) == 0)
-		{
+		if (*line)
 			line++;
+	}
+	return (count);
+}
+
+int	ft_count_words(char *str, char delimiter)
+{
+	int	count;
+
+	count = 0;
+	while (*str)
+	{
+		while (*str == delimiter)
+		{
+			str++;
+		}
+		if (*str && *str != delimiter)
+		{
+			count++;
+			while (*str && *str != delimiter)
+				str++;
 		}
 	}
-	return (x);
+	return (count);
 }
