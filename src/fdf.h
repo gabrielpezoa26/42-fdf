@@ -3,27 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/13 15:05:49 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/01/13 21:22:19 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 600
 # include <math.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include "../libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
 typedef struct s_point3d
 {
-	int		x;
-	int		y;
-	int		z;
+	int	x;
+	int	y;
+	int	z;
 }	t_point3d;
 
 typedef struct s_map
@@ -36,7 +44,7 @@ typedef struct s_map
 typedef struct s_mlx
 {
 	mlx_t		*mlx_ptr;
-	mlx_image_t	*img_ptr;
+	mlx_image_t	*img;
 }	t_mlx;
 
 //            PROTOTYPES               //

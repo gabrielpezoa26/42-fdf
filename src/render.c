@@ -6,34 +6,89 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:59:41 by gabriel           #+#    #+#             */
-/*   Updated: 2025/01/13 20:56:07 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/13 21:46:53 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_mlx	*init_mlx(int width, int height, char *title)
+static void render_line(t_mlx *mlx, t_point start, t_point end)
 {
-	t_mlx	*mlx;
+	double  dx;
+	double  dy;
+	double  max;
+	double  step;
+
+	dx = end.x - start.x;
+	dy = end.y - start.y;
+	max = fmax(fabs(dx), fabs(dy));
+	step = 1.0 / max;
+	while (max > 0)
+	{
+		mlx_put_pixel(mlx->img, start.x, start.y, 0xFFFFFF);
+		start.x += dx * step;
+		start.y += dy * step;
+		max--;
+	}
+}
+
+static void render_row(t_map *map, t_mlx *mlx, int row)
+{
+	int col;
+	t_point start;
+	t_point end;
+
+	col = 0;
+	while (col < map->cols - 1)
+	{
+		start.x = col * 20;
+		start.y = row * 20;
+		end.x = (col + 1) * 20;
+		end.y = row * 20;
+		render_line(mlx, start, end);
+		col++;
+	}
+}
+
+void render_grid(t_map *map, t_mlx *mlx)
+{
+	int row;
+
+	row = 0;
+	while (row < map->rows)
+	{
+		render_row(map, mlx, row);
+		row++;
+	}
+}
+
+#include "fdf.h"
+
+void render_map(t_map *map, t_mlx *mlx)
+{
+	render_grid(map, mlx);
+	mlx_image_to_window(mlx->mlx_ptr, mlx->img, 0, 0);
+}
+
+t_mlx *init_mlx(int width, int height, char *title)
+{
+	t_mlx *mlx;
 
 	mlx = malloc(sizeof(t_mlx));
 	if (!mlx)
-		handle_error("Error: Failed to allocate memory for MLX.\n");
+		return (NULL);
 	mlx->mlx_ptr = mlx_init(width, height, title, true);
 	if (!mlx->mlx_ptr)
-		handle_error("Error: Failed to initialize MLX.\n");
-	mlx->img_ptr = mlx_new_image(mlx->mlx_ptr, width, height);
-	if (!mlx->img_ptr)
-		handle_error("Error: Failed to create MLX image.\n");
-
+	{
+		free(mlx);
+		return (NULL);
+	}
+	mlx->img = mlx_new_image(mlx->mlx_ptr, width, height);
+	if (!mlx->img)
+	{
+		mlx_terminate(mlx->mlx_ptr);
+		free(mlx);
+		return (NULL);
+	}
 	return (mlx);
-}
-
-void	render_map(t_map *map, t_mlx *mlx)
-{
-	if (!map || !mlx)
-		return ;
-	mlx_image_to_window(mlx->mlx_ptr, mlx->img_ptr, 0, 0);
-	ft_printf("Rendering map...\n");
-	mlx_loop(mlx->mlx_ptr);
 }
