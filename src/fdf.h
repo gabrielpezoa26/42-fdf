@@ -6,20 +6,21 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/13 21:22:19 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/13 22:04:10 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 600
 # include <math.h>
 # include <fcntl.h>
 # include <stdlib.h>
 # include "../libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
+
+# define WINDOW_WIDTH 800
+# define WINDOW_HEIGHT 600
 
 typedef struct s_point
 {

@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:59:41 by gabriel           #+#    #+#             */
-/*   Updated: 2025/01/13 21:46:53 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/13 22:04:03 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void render_line(t_mlx *mlx, t_point start, t_point end)
 {
-	double  dx;
-	double  dy;
-	double  max;
-	double  step;
+	double dx;
+	double dy;
+	double max;
+	double step;
 
 	dx = end.x - start.x;
 	dy = end.y - start.y;
@@ -32,11 +32,10 @@ static void render_line(t_mlx *mlx, t_point start, t_point end)
 	}
 }
 
-static void render_row(t_map *map, t_mlx *mlx, int row)
+static void render_horizontal(t_map *map, t_mlx *mlx, int row)
 {
 	int col;
-	t_point start;
-	t_point end;
+	t_point start, end;
 
 	col = 0;
 	while (col < map->cols - 1)
@@ -50,19 +49,43 @@ static void render_row(t_map *map, t_mlx *mlx, int row)
 	}
 }
 
-void render_grid(t_map *map, t_mlx *mlx)
+static void render_vertical(t_map *map, t_mlx *mlx, int col)
 {
 	int row;
+	t_point start;
+	t_point end;
 
 	row = 0;
-	while (row < map->rows)
+	while (row < map->rows - 1)
 	{
-		render_row(map, mlx, row);
+		start.x = col * 20;
+		start.y = row * 20;
+		end.x = col * 20;
+		end.y = (row + 1) * 20;
+		render_line(mlx, start, end);
 		row++;
 	}
 }
 
-#include "fdf.h"
+void render_grid(t_map *map, t_mlx *mlx)
+{
+	int row;
+	int col;
+
+	row = 0;
+	while (row < map->rows)
+	{
+		render_horizontal(map, mlx, row);
+		row++;
+	}
+
+	col = 0;
+	while (col < map->cols)
+	{
+		render_vertical(map, mlx, col);
+		col++;
+	}
+}
 
 void render_map(t_map *map, t_mlx *mlx)
 {
