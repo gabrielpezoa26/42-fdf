@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:24:58 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/12 22:40:09 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/14 12:43:49 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ static int	read_map_file(t_map *map, char *filename)
 	close(fd);
 	return (0);
 }
-
 
 t_map	*parse_map(char *filename)
 {

@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:59:41 by gabriel           #+#    #+#             */
-/*   Updated: 2025/01/14 00:01:20 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/14 12:52:34 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void render_line(t_mlx *mlx, t_point start, t_point end)
+static void	render_line(t_mlx *mlx, t_point start, t_point end)
 {
-	double dx;
-	double dy;
-	double max;
-	double step;
+	double	dx;
+	double	dy;
+	double	max;
+	double	step;
 
 	dx = end.x - start.x;
 	dy = end.y - start.y;
@@ -32,11 +32,11 @@ static void render_line(t_mlx *mlx, t_point start, t_point end)
 	}
 }
 
-static void render_horizontal(t_map *map, t_mlx *mlx, int row)
+static void	render_horizontal(t_map *map, t_mlx *mlx, int row)
 {
-	int col;
-	t_point start;
-	t_point end;
+	int		col;
+	t_point	start;
+	t_point	end;
 
 	col = 0;
 	while (col < map->cols - 1)
@@ -50,11 +50,11 @@ static void render_horizontal(t_map *map, t_mlx *mlx, int row)
 	}
 }
 
-static void render_vertical(t_map *map, t_mlx *mlx, int col)
+static void	render_vertical(t_map *map, t_mlx *mlx, int col)
 {
-	int row;
-	t_point start;
-	t_point end;
+	int		row;
+	t_point	start;
+	t_point	end;
 
 	row = 0;
 	while (row < map->rows - 1)
@@ -68,10 +68,10 @@ static void render_vertical(t_map *map, t_mlx *mlx, int col)
 	}
 }
 
-void render_grid(t_map *map, t_mlx *mlx)
+void	render_grid(t_map *map, t_mlx *mlx)
 {
-	int row;
-	int col;
+	int	row;
+	int	col;
 
 	row = 0;
 	while (row < map->rows)
@@ -79,7 +79,6 @@ void render_grid(t_map *map, t_mlx *mlx)
 		render_horizontal(map, mlx, row);
 		row++;
 	}
-
 	col = 0;
 	while (col < map->cols)
 	{
@@ -88,15 +87,15 @@ void render_grid(t_map *map, t_mlx *mlx)
 	}
 }
 
-void render_map(t_map *map, t_mlx *mlx)
+void	render_map(t_map *map, t_mlx *mlx)
 {
 	render_grid(map, mlx);
 	mlx_image_to_window(mlx->mlx_ptr, mlx->img, 0, 0);
 }
 
-t_mlx *init_mlx(int width, int height, char *title)
+t_mlx	*init_mlx(int width, int height, char *title)
 {
-	t_mlx *mlx;
+	t_mlx	*mlx;
 
 	mlx = malloc(sizeof(t_mlx));
 	if (!mlx)
