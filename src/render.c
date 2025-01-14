@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:59:41 by gabriel           #+#    #+#             */
-/*   Updated: 2025/01/13 22:04:03 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/14 00:01:20 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static void render_line(t_mlx *mlx, t_point start, t_point end)
 static void render_horizontal(t_map *map, t_mlx *mlx, int row)
 {
 	int col;
-	t_point start, end;
+	t_point start;
+	t_point end;
 
 	col = 0;
 	while (col < map->cols - 1)
