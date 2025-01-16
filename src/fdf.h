@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/13 22:04:10 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/15 14:47:58 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define WINDOW_WIDTH 800
-# define WINDOW_HEIGHT 600
+# define WINDOW_HEIGHT 900
 
 typedef struct s_point
 {

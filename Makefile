@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+         #
+#    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/09 14:04:57 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/01/13 14:29:06 by gcesar-n         ###   ########.fr        #
+#    Updated: 2025/01/15 13:12:28 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,14 @@ CC	= cc
 CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 
 INCLUDES	= -I ./src -I ./lib/MLX42/include -I ./lib/libft
+
 LIBFT_DIR	= ./libft
 LIBFT		= $(LIBFT_DIR)/libft.a
+
 MLX42_DIR	= ./MLX42
 MLX42_BUILD	= $(MLX42_DIR)/build
 LIBMLX42	= $(MLX42_BUILD)/libmlx42.a
+
 LIBS		= $(LIBMLX42) -ldl -lglfw -pthread -lm
 
 SRCS =	./src/controls.c \
