@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 18:36:28 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/12 21:56:17 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/20 16:12:28 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_memory(t_map *map)
 	int	i;
 
 	if (!map || !map->grid)
-		return;
+		return ;
 	i = 0;
 	while (i < map->rows)
 	{

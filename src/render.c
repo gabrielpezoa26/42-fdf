@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:59:41 by gabriel           #+#    #+#             */
-/*   Updated: 2025/01/14 16:25:22 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:13:05 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	render_vertical(t_map *map, t_mlx *mlx, int col)
 		end.y = (row + 1) * 20;
 		render_line(mlx, start, end);
 		row++;
-	}  //teste
+	}
 }
 
 void	render_grid(t_map *map, t_mlx *mlx)
