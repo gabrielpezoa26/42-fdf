@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 17:00:17 by gabriel           #+#    #+#             */
-/*   Updated: 2025/01/20 16:12:43 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/22 15:43:06 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	main (int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_map	*map;
 	t_mlx	*mlx;

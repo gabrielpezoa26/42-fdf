@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/15 14:47:58 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/01/22 16:39:06 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 900
 
+// STRUCTS
 typedef struct s_point
 {
 	int	x;
@@ -48,7 +49,7 @@ typedef struct s_mlx
 	mlx_image_t	*img;
 }	t_mlx;
 
-//            PROTOTYPES               //
+//PROTOTYPES
 
 // Parser and map handling
 t_map	*parse_map(char *filename);
