@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:24:58 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/22 16:34:52 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:54:57 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ static void	check_column_consistency(t_map *map, char *line)
 	if (ft_count_words(line, ' ') != map->cols)
 	{
 		free(line);
-		handle_error("Error: Inconsistent column count.\n");
+		handle_error("Error: Inconsistent column count.\n");  //validacao mapa
 	}
 }
 
-static int	read_map_file(t_map *map, char *filename)
+static int	read_map_file(t_map *map, char *filename)  //le o .fdf e guarda em "t_map"
 {
 	int		fd;
 	char	*line;
@@ -44,7 +44,7 @@ static int	read_map_file(t_map *map, char *filename)
 	return (0);
 }
 
-t_map	*parse_map(char *filename)
+t_map	*parse_map(char *filename)  //parseia o mapa e forma o grid
 {
 	t_map	*map;
 

@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:59:41 by gabriel           #+#    #+#             */
-/*   Updated: 2025/01/22 16:31:43 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:56:46 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,18 @@ static void	render_line(t_mlx *mlx, t_point start, t_point end)
 static void	render_horizontal(t_map *map, t_mlx *mlx, int row)
 {
 	int		col;
+	int		size;
 	t_point	start;
 	t_point	end;
 
 	col = 0;
+	size = 25;
 	while (col < map->cols - 1)
 	{
-		start.x = col * 20;
-		start.y = row * 20;
-		end.x = (col + 1) * 20;
-		end.y = row * 20;
+		start.x = col * size;  //tamanho do bagui
+		start.y = row * size;
+		end.x = (col + 1) * size;
+		end.y = row * size;
 		render_line(mlx, start, end);
 		col++;
 	}
@@ -53,16 +55,18 @@ static void	render_horizontal(t_map *map, t_mlx *mlx, int row)
 static void	render_vertical(t_map *map, t_mlx *mlx, int col)
 {
 	int		row;
+	int		size;
 	t_point	start;
 	t_point	end;
 
 	row = 0;
+	size = 25;
 	while (row < map->rows - 1)
 	{
-		start.x = col * 20;
-		start.y = row * 20;
-		end.x = col * 20;
-		end.y = (row + 1) * 20;
+		start.x = col * size;
+		start.y = row * size;
+		end.x = col * size;
+		end.y = (row + 1) * size;
 		render_line(mlx, start, end);
 		row++;
 	}
@@ -87,31 +91,31 @@ void	render_grid(t_map *map, t_mlx *mlx)
 	}
 }
 
-void	render_map(t_map *map, t_mlx *mlx)
-{
-	render_grid(map, mlx);
-	mlx_image_to_window(mlx->mlx_ptr, mlx->img, 0, 0);
-}
+// void	render_map(t_map *map, t_mlx *mlx)
+// {
+// 	render_grid(map, mlx);
+// 	mlx_image_to_window(mlx->mlx_ptr, mlx->img, 0, 0);
+// }
 
-t_mlx	*init_mlx(int width, int height, char *title)
-{
-	t_mlx	*mlx;
+// t_mlx	*init_mlx(int width, int height, char *title)
+// {
+// 	t_mlx	*mlx;
 
-	mlx = malloc(sizeof(t_mlx));
-	if (!mlx)
-		return (NULL);
-	mlx->mlx_ptr = mlx_init(width, height, title, true);
-	if (!mlx->mlx_ptr)
-	{
-		free(mlx);
-		return (NULL);
-	}
-	mlx->img = mlx_new_image(mlx->mlx_ptr, width, height);
-	if (!mlx->img)
-	{
-		mlx_terminate(mlx->mlx_ptr);
-		free(mlx);
-		return (NULL);
-	}
-	return (mlx);
-}
+// 	mlx = malloc(sizeof(t_mlx));
+// 	if (!mlx)
+// 		return (NULL);
+// 	mlx->mlx_ptr = mlx_init(width, height, title, true);
+// 	if (!mlx->mlx_ptr)
+// 	{
+// 		free(mlx);
+// 		return (NULL);
+// 	}
+// 	mlx->img = mlx_new_image(mlx->mlx_ptr, width, height);
+// 	if (!mlx->img)
+// 	{
+// 		mlx_terminate(mlx->mlx_ptr);
+// 		free(mlx);
+// 		return (NULL);
+// 	}
+// 	return (mlx);
+// }

@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/22 16:39:06 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:41:03 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	handle_error(const char *message);
 // Render
 void	render_map(t_map *map, t_mlx *mlx);
 t_mlx	*init_mlx(int width, int height, char *title);
+void	render_grid(t_map *map, t_mlx *mlx);
 
 // Controls
 void	setup_controls(t_mlx *mlx);
