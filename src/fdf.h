@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/28 13:41:03 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/01/28 16:10:23 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include "../libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 
-# define WINDOW_WIDTH 800
-# define WINDOW_HEIGHT 900
+# define WINDOW_WIDTH 1500  //800
+# define WINDOW_HEIGHT 1500  //900
 
 // STRUCTS
 typedef struct s_point
