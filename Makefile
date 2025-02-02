@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+         #
+#    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/09 14:04:57 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/01/28 13:14:28 by gcesar-n         ###   ########.fr        #
+#    Updated: 2025/02/02 17:06:44 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ CC	= cc
 
 CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 
-INCLUDES	= -I ./src -I ./lib/MLX42/include -I ./lib/libft
+#INCLUDES	= -I ./src -I ./lib/MLX42/include -I ./lib/libft
+INCLUDES = -I ./src -I ./MLX42/include -I ./MLX42/include/MLX42 -I ./libft
 
 LIBFT_DIR	= ./libft
 LIBFT		= $(LIBFT_DIR)/libft.a
