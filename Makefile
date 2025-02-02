@@ -6,7 +6,7 @@
 #    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/09 14:04:57 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/02/02 17:06:44 by gabriel          ###   ########.fr        #
+#    Updated: 2025/02/02 17:24:21 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,8 @@ SRCS =	./src/controls.c \
 		./src/error_handler.c \
 		./src/main.c \
 		./src/map_parser.c \
-		./src/populate_map.c \
 		./src/render.c \
-		./src/utils.c \
-		./src/render_utils.c
+		./src/utils.c 
 
 OBJS = $(SRCS:.c=.o)
 

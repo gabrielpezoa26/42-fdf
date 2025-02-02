@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+         #
+#    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 12:32:25 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/01/09 13:18:18 by gcesar-n         ###   ########.fr        #
+#    Updated: 2025/02/02 17:30:52 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC = \
 	ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c ft_itoa.c \
 	get_next_line.c get_next_line_utils.c \
 	ft_printf.c ft_hex_lower.c ft_hex_upper.c ft_putchar.c ft_putnbr.c \
-	ft_putptr.c ft_putstr.c ft_putunbr.c ft_strchr.c \
+	ft_putptr.c ft_putstr.c ft_putunbr.c ft_strchr.c ft_minmax.c \
 
 BONUS_SRCS = \
 	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \

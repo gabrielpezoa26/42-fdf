@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:35:51 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/01/09 13:11:54 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:27:06 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,32 +83,4 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	}
 	dest_ptr[i] = '\0';
 	return (dest_ptr);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	size_t	i;
-	char	*result;
-
-	if (!s)
-	{
-		return (NULL);
-	}
-	if ((size_t)start >= ft_strlen(s))
-	{
-		return (ft_strdup(""));
-	}
-	result = (char *)malloc(sizeof(char) * (len + 1));
-	if (result == NULL)
-	{
-		return (NULL);
-	}
-	i = 0;
-	while (s[start + i] && i < len)
-	{
-		result[i] = s[start + i];
-		i++;
-	}
-	result[i] = '\0';
-	return (result);
 }

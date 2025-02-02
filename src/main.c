@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 17:00:17 by gabriel           #+#    #+#             */
-/*   Updated: 2025/02/02 16:56:46 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 17:31:57 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,28 +127,3 @@ int	main(int ac, char **av)
 	free_map(fdf->map);
 	return (0);
 }
-
-
-
-// int	main(int argc, char **argv)
-// {
-// 	t_map	*map;
-// 	t_mlx	*mlx;
-
-// 	if (argc != 2)
-// 	{
-// 		handle_error("Usage: ./fdf <map_file>\n");  //trata erro d formatacao
-// 		return (1);
-// 	}
-// 	map = parse_map(argv[1]);  //chama a func de parseamento
-// 	if (!map)
-// 		handle_error("Failed to parse map.\n");
-// 	mlx = init_mlx(WINDOW_WIDTH, WINDOW_HEIGHT, "FdF");
-// 	if (!mlx)
-// 		handle_error("Failed to initialize MLX.\n");
-// 	render_map(map, mlx);
-// 	setup_controls(mlx);  //inicializa os controle
-// 	mlx_loop(mlx->mlx_ptr);  //mantém o loop
-// 	free_memory(map);
-// 	return (0);
-// }
