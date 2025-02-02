@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 17:00:17 by gabriel           #+#    #+#             */
-/*   Updated: 2025/02/02 18:09:56 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 18:15:52 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	map_init(t_map *map)
 	map->grid3d = NULL;
 }
 
-static t_map	*parse_input(char *filename)
+static t_map	*input_parser(char *filename)
 {
 	int		fd;
 	t_map	*map;
@@ -85,11 +85,11 @@ static t_map	*parse_input(char *filename)
 	return (map);
 }
 
-static t_fdf	*init_fdf(char *filename)
+static t_fdf	*fdf_init(char *filename)
 {
 	static t_fdf	fdf;
 
-	fdf.map = parse_input(filename);
+	fdf.map = input_parser(filename);
 	fdf.mlx = mlx_init(WIDTH, HEIGHT, "FdF", true);
 	if (!fdf.mlx)
 	{
@@ -112,7 +112,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2 || !is_valid(av[1]))
 		handle_error(FORMAT);
-	fdf = init_fdf(av[1]);
+	fdf = fdf_init(av[1]);
 	render_image(fdf);
 	if (mlx_image_to_window(fdf->mlx, fdf->image, 0, 0) == -1)
 	{

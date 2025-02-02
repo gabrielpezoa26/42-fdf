@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/02 18:09:49 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 18:13:33 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <limits.h>
 # include <errno.h>
 # include <stdio.h>
-# include <string.h>
 # include "MLX42/MLX42.h"
 # include "../libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
@@ -93,7 +92,6 @@ void		ft_hook(void *data);
 void		zoom_handler(double x_delta, double y_delta, void *data);
 
 //UTILS
-
 void		fill_image(mlx_image_t *image);
 int			is_valid(const char *filename);
 void		make_upper(unsigned int i, char *c);
