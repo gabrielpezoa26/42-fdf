@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 17:00:17 by gabriel           #+#    #+#             */
-/*   Updated: 2025/02/02 17:31:57 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 18:09:56 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	malloc_grid(t_map *map)
 	if (!(map->grid2d) || !(map->grid3d))
 	{
 		free_map(map);
-		handle_error(MALLOC);
+		handle_error("Malloc fail");
 	}
 	i = -1;
 	while (++i < map->rows)
@@ -36,12 +36,12 @@ static void	malloc_grid(t_map *map)
 				map->grid2d[i + 1] = NULL;
 			}
 			free_map(map);
-			handle_error(MALLOC);
+			handle_error("Malloc fail");
 		}
 	}
 }
 
-void	init_map(t_map *map)
+void	map_init(t_map *map)
 {
 	map->alpha = 0.46373398 / 2;
 	map->beta = 0.46373398;
@@ -66,21 +66,21 @@ static t_map	*parse_input(char *filename)
 
 	fd = open(filename, O_RDONLY, 0777);
 	if (fd == -1)
-		handle_error(FILE_ERROR);
+		handle_error("Error");
 	map = malloc(sizeof(t_map));
 	if (!map)
 	{
 		close(fd);
-		handle_error(MALLOC);
+		handle_error("Malloc fail");
 	}
-	init_map(map);
-	get_dimensions(fd, map);
+	map_init(map);
+	get_map_size(fd, map);
 	close(fd);
 	malloc_grid(map);
 	map->interval = ft_min(WIDTH / map->cols, HEIGHT / map->rows) / 2;
 	map->interval = ft_max(2, map->interval);
 	fd = open(filename, O_RDONLY, 0777);
-	parse_map(fd, map);
+	map_parser(fd, map);
 	close(fd);
 	return (map);
 }
@@ -110,10 +110,10 @@ int	main(int ac, char **av)
 {
 	t_fdf		*fdf;
 
-	if (ac != 2 || !valid_filename(av[1]))
+	if (ac != 2 || !is_valid(av[1]))
 		handle_error(FORMAT);
 	fdf = init_fdf(av[1]);
-	draw_image(fdf);
+	render_image(fdf);
 	if (mlx_image_to_window(fdf->mlx, fdf->image, 0, 0) == -1)
 	{
 		free_map(fdf->map);
@@ -121,7 +121,7 @@ int	main(int ac, char **av)
 		handle_error(mlx_strerror(mlx_errno));
 	}
 	mlx_loop_hook(fdf->mlx, &ft_hook, fdf);
-	mlx_loop_hook(fdf->mlx, &draw_image, fdf);
+	mlx_loop_hook(fdf->mlx, &render_image, fdf);
 	mlx_loop(fdf->mlx);
 	mlx_terminate(fdf->mlx);
 	free_map(fdf->map);

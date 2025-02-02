@@ -6,13 +6,13 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:36:21 by gabriel           #+#    #+#             */
-/*   Updated: 2025/02/02 16:58:25 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 17:53:40 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_free_tab(void **tab, size_t len)
+void	free_tab(void **tab, size_t len)
 {
 	size_t	i;
 
@@ -30,9 +30,9 @@ void	free_map(t_map *map)
 	if (!map)
 		return ;
 	if (map->grid2d)
-		ft_free_tab((void **)map->grid2d, map->rows);
+		free_tab((void **)map->grid2d, map->rows);
 	if (map->grid3d)
-		ft_free_tab((void **)map->grid3d, map->rows);
+		free_tab((void **)map->grid3d, map->rows);
 	free(map);
 }
 

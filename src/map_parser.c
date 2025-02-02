@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:24:58 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/02 17:32:05 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 18:09:56 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	parse_column(int fd, t_map *map, char **tab, int i)
 	}
 }
 
-void	parse_map(int fd, t_map *map)
+void	map_parser(int fd, t_map *map)
 {
 	char	*line;
 	char	*temp;
@@ -48,17 +48,17 @@ void	parse_map(int fd, t_map *map)
 	{
 		temp = get_next_line(fd);
 		if (!temp)
-			error_map(fd, map, MALLOC);
+			error_map(fd, map, "Malloc fail");
 		line = ft_strtrim(temp, "\n");
 		free(temp);
 		if (!line)
-			error_map(fd, map, MALLOC);
+			error_map(fd, map, "Malloc fail");
 		tab = ft_split(line, ' ');
 		free(line);
 		if (!tab)
-			error_map(fd, map, MALLOC);
+			error_map(fd, map, "Malloc fail");
 		parse_column(fd, map, tab, i);
-		ft_free_tab((void **)tab, map->cols);
+		free_tab((void **)tab, map->cols);
 	}
 }
 
@@ -71,11 +71,11 @@ static int	get_cols(int fd, t_map *map, char *line)
 	temp = ft_strtrim(line, "\n");
 	free(line);
 	if (!temp)
-		error_map(fd, map, MALLOC);
+		error_map(fd, map, "Malloc fail");
 	tab = ft_split(temp, ' ');
 	free(temp);
 	if (!tab)
-		error_map(fd, map, MALLOC);
+		error_map(fd, map, "Malloc fail");
 	i = 0;
 	while (tab[i])
 	{
@@ -83,17 +83,17 @@ static int	get_cols(int fd, t_map *map, char *line)
 		map->low = ft_min(map->low, ft_atoi(tab[i]));
 		i++;
 	}
-	ft_free_tab((void **)tab, i);
+	free_tab((void **)tab, i);
 	return (i);
 }
 
-void	get_dimensions(int fd, t_map *map)
+void	get_map_size(int fd, t_map *map)
 {
 	char	*line;
 
 	line = get_next_line(fd);
 	if (!line)
-		error_map(fd, map, MALLOC);
+		error_map(fd, map, "Malloc fail");
 	map->cols = get_cols(fd, map, line);
 	if (map->cols == 0)
 		error_map(fd, map, INVALID_MAP);

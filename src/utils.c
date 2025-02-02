@@ -6,13 +6,13 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 18:36:28 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/02 17:32:28 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 17:50:07 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	valid_filename(const char *filename)
+int	is_valid(const char *filename)
 {
 	int	len;
 
@@ -29,7 +29,7 @@ void	make_upper(unsigned int i, char *c)
 	*c = ft_toupper(*c);
 }
 
-void	draw_reset(mlx_image_t *image)
+void	fill_image(mlx_image_t *image)
 {
 	uint32_t	i;
 	uint32_t	j;
@@ -40,7 +40,8 @@ void	draw_reset(mlx_image_t *image)
 		j = 0;
 		while (j < image->width)
 		{
-			mlx_put_pixel(image, j, i, BACKGROUND);
+			// mlx_put_pixel(image, j, i, 0x22222200);
+			mlx_put_pixel(image, j, i, 0x000000FF);
 			j++;
 		}
 		i++;
