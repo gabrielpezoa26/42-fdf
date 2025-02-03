@@ -1,0 +1,70 @@
+{
+   MLX42_leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   obj:/usr/lib/x86_64-linux-gnu/libglfw.so.*
+   fun:mlx_init
+   fun:mlx_new_image
+   fun:mlx_loop
+   fun:mlx_terminate
+}
+
+{
+   GLFW_leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   obj:/usr/lib/x86_64-linux-gnu/libglfw.so.*
+   fun:glfwCreateWindow
+   fun:glfwInit
+   fun:glfwMakeContextCurrent
+}
+
+{
+   X11_leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   obj:/usr/lib/x86_64-linux-gnu/libX11.so.*
+   fun:_XimLocalOpenIM
+   fun:_XimOpenIM
+   fun:glfwInit
+}
+
+{
+   WSL_graphics_leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   obj:/usr/lib/wsl/*
+}
+
+{
+   LLVM_leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   obj:/usr/lib/wsl/drivers/iigd_dch.inf_amd64_*
+}
+
+{
+   Mesa_graphics_leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   obj:/usr/lib/x86_64-linux-gnu/libGLX_mesa.so.*
+   obj:/usr/lib/x86_64-linux-gnu/libgallium-*.so
+   fun:glfwCreateWindow
+}
+
+{
+   Posix_memalign_leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:posix_memalign
+   fun:aligned_alloc
+   obj:/usr/lib/x86_64-linux-gnu/libc-*
+}
+
+{
+   Thread_leaks
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:pthread_create
+   fun:pthread_cond_broadcast
+}
