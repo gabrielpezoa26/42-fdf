@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 22:10:44 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/03 16:33:45 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/03 17:57:31 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,14 @@ static void	allocate_map(t_map *map)
 
 void	map_init(t_map *map)
 {
-	map->alpha = 0.46373398 / 2;
-	map->beta = 0.46373398;
-	map->x_offset = WIDTH / 2;
-	map->y_offset = HEIGHT / 2;
+	map->angle_x = 0.46373398 / 2;
+	map->angle_y = 0.46373398;
+	map->x_shift = WIDTH / 2;
+	map->y_shift = HEIGHT / 2;
 	map->zoom = 0.8;
-	map->zscale = 0.8;
-	map->high = INT_MIN;
-	map->low = INT_MAX;
+	map->height_scale = 0.8;
+	map->max_height = INT_MIN;
+	map->min_height = INT_MAX;
 	map->rows = 0;
 	map->cols = 0;
 	map->grid2d = NULL;

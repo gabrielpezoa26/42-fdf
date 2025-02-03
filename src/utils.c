@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 18:36:28 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/03 17:17:15 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/03 18:06:52 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	fill_image(mlx_image_t *image)
 		j = 0;
 		while (j < image->width)
 		{
-			// mlx_put_pixel(image, j, i, 0x22222200);
 			mlx_put_pixel(image, j, i, 0x000000FF);
 			j++;
 		}

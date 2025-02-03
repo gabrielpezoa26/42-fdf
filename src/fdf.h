@@ -6,34 +6,32 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/03 17:37:27 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/03 18:07:59 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include <fcntl.h>
 # include <stdlib.h>
 # include <math.h>
-# include <limits.h>
+# include <fcntl.h>
 # include <errno.h>
+# include <limits.h>
 # include <stdio.h>
-# include "MLX42/MLX42.h"
 # include "../libft/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 
-# define WIDTH				1920
-# define HEIGHT				1080
-# define FORMAT				" Corret format:\n./fdf maps/filename.fdf"
-# define INVALID_MAP		"Map is invalid"
+# define WIDTH			1920
+# define HEIGHT			1080
+# define FORMAT			"Invalid format. Correct format:\n./fdf maps/file.fdf"
+# define INVALID_MAP	"Invalid map"
 
 typedef struct s_point2d
 {
-	int		x;
-	int		y;
-	int		z;
-	int		rgba;
+	int		col;
+	int		row;
+	int		color;
 }			t_point2d;
 
 typedef struct s_point3d
@@ -42,22 +40,21 @@ typedef struct s_point3d
 	double	y;
 	double	z;
 	int		mapcolor;
-	int		zcolor;
 }				t_point3d;
 
 typedef struct s_map
 {
 	int				rows;
 	int				cols;
-	int				high;
-	int				low;
-	double			x_offset;
-	double			y_offset;
+	int				max_height;
+	int				min_height;
+	double			x_shift;
+	double			y_shift;
 	double			interval;
-	double			alpha;
-	double			beta;
+	double			angle_x;
+	double			angle_y;
 	double			zoom;
-	double			zscale;
+	double			height_scale;
 	t_point3d		**grid3d;
 	t_point2d		**grid2d;
 }					t_map;

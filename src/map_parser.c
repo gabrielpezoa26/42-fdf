@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:24:58 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/03 17:11:26 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/03 17:55:53 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static void	parse_row(int fd, t_map *map, char **tab, int i)
 		point->x = (double)j * (map->interval) - x_offset;
 		point->y = (double)i * (map->interval) - y_offset;
 		point->z = (double)ft_atoi(tab[j]) * (map->interval);
-		map->high = ft_max(map->high, point->z);
-		map->low = ft_min(map->low, point->z);
+		map->max_height = ft_max(map->max_height, point->z);
+		map->min_height = ft_min(map->min_height, point->z);
 		point->mapcolor = 0xFFFFFFFF;
 	}
 }
@@ -79,8 +79,8 @@ static int	get_cols(int fd, t_map *map, char *line)
 	i = 0;
 	while (tab[i])
 	{
-		map->high = ft_max(map->high, ft_atoi(tab[i]));
-		map->low = ft_min(map->low, ft_atoi(tab[i]));
+		map->max_height = ft_max(map->max_height, ft_atoi(tab[i]));
+		map->min_height = ft_min(map->min_height, ft_atoi(tab[i]));
 		i++;
 	}
 	free_array((void **)tab, i);
