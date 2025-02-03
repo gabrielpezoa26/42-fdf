@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/02 21:42:57 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 22:18:16 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@
 # define FORMAT				" Corret format:\n./fdf maps/filename.fdf"
 # define INVALID_MAP		"Map is invalid"
 
+typedef struct s_line
+{
+	int	delta_x;
+	int	delta_y;
+	int	step_x;
+	int	step_y;
+	int	error;
+}	t_line;
 
 typedef struct s_point2d
 {
@@ -70,8 +78,8 @@ typedef struct s_fdf
 	mlx_image_t	*image;
 }				t_fdf;
 
-//MAIN
-void		map_init(t_map *map);
+//SETUP
+t_fdf		*fdf_init(char *filename);
 
 //PARSE
 void		map_parser(int fd, t_map *map);
@@ -84,7 +92,7 @@ void		handle_error(const char *message);
 void		error_map(int fd, t_map *map, char *message);
 
 //RENDER
-void		convert_to_2d(t_map *map, int i, int j);
+void		convert_to_2d(t_map *map, int row, int col);
 void		render_image(void *data);
 
 //CONTROLS
@@ -95,6 +103,6 @@ void		zoom_handler(double x_delta, double y_delta, void *data);
 void		fill_image(mlx_image_t *image);
 int			is_valid(const char *filename);
 void		make_upper(unsigned int i, char *c);
-void			check_input(int argc, char *filename);
+void		check_input(int argc, char *filename);
 
 #endif
