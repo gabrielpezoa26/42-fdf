@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 22:12:25 by gabriel           #+#    #+#             */
-/*   Updated: 2025/02/02 23:30:42 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 23:34:46 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	mv_controls(void *data)
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_ESCAPE))
 	{
 		mlx_close_window(fdf->mlx);
-		ft_printf("Exit");
+		ft_printf(":)\n");
 	}
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_LEFT))
 		fdf->map->x_offset -= 5;
