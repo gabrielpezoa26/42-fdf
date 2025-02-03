@@ -6,27 +6,22 @@
 #    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/09 14:04:57 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/02/02 22:12:41 by gabriel          ###   ########.fr        #
+#    Updated: 2025/02/03 13:11:50 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= fdf
-
-CC	= cc
-
-CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
-
-#INCLUDES	= -I ./src -I ./lib/MLX42/include -I ./lib/libft
+CC = cc
+CFLAGS = -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 INCLUDES = -I ./src -I ./MLX42/include -I ./MLX42/include/MLX42 -I ./libft
 
-LIBFT_DIR	= ./libft
-LIBFT		= $(LIBFT_DIR)/libft.a
+LIBFT_DIR = ./libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
-MLX42_DIR	= ./MLX42
-MLX42_BUILD	= $(MLX42_DIR)/build
-LIBMLX42	= $(MLX42_BUILD)/libmlx42.a
+MLX42_DIR = ./MLX42
+MLX42_BUILD = $(MLX42_DIR)/build
+LIBMLX42 = $(MLX42_BUILD)/libmlx42.a
 
-LIBS		= $(LIBMLX42) -ldl -lglfw -pthread -lm
+LIBS = $(LIBMLX42) -ldl -lglfw -pthread -lm
 
 SRCS =	./src/controls.c \
 		./src/error_handler.c \
@@ -37,35 +32,38 @@ SRCS =	./src/controls.c \
 		./src/setup.c 
 
 OBJS = $(SRCS:.c=.o)
+DEPS = ./src/fdf.h
 
 all: $(NAME)
 
-$(NAME): libmlx $(LIBFT) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(LIBS)
+$(NAME): $(OBJS) $(LIBMLX42) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(LIBS)
 	@echo "linkingggg $(NAME)"
 
-libmlx:
-	@cmake -DDEBUG=1 $(MLX42_DIR) -B $(MLX42_BUILD)
-	@make -C $(MLX42_BUILD) -j4
-	@echo "mlx42 builttttt"
+$(LIBMLX42):
+	cmake -DDEBUG=1 $(MLX42_DIR) -B $(MLX42_BUILD)
+	make -C $(MLX42_BUILD) -j4
 
 $(LIBFT):
-	@make -C $(LIBFT_DIR) all
-	@echo "libft builtttt"
+	make -C $(LIBFT_DIR) all
 
-%.o: %.c
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+$(OBJS): $(DEPS)
+
+%.o: %.c $(DEPS)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@echo "compilinggg $<"
 
 clean:
-	@rm -rf $(OBJS)
-	@make clean -C $(LIBFT_DIR)
-	@rm -rf $(MLX42_BUILD)
-	@echo "cleaningggg"
+	rm -rf $(OBJS)
+	make clean -C $(LIBFT_DIR)
+	rm -rf $(MLX42_BUILD)
+	@echo "cleaningggg $<"
+
 
 fclean: clean
-	@rm -f $(NAME)
-	@make fclean -C $(LIBFT_DIR)
-	@echo "full cleaningggg"
+	rm -f $(NAME)
+	make fclean -C $(LIBFT_DIR)
+	@echo "full cleaninggg $<"
+
 
 re: fclean all
