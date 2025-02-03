@@ -6,38 +6,29 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 17:00:17 by gabriel           #+#    #+#             */
-/*   Updated: 2025/02/02 18:15:52 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 21:45:38 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	malloc_grid(t_map *map)
+static void allocate_map(t_map *map)
 {
-	int	i;
+	int i;
 
 	map->grid3d = malloc(sizeof(t_point3d *) * map->rows);
 	map->grid2d = malloc(sizeof(t_point2d *) * map->rows);
-	if (!(map->grid2d) || !(map->grid3d))
-	{
-		free_map(map);
+	if (!map->grid3d || !map->grid2d)
 		handle_error("Malloc fail");
-	}
-	i = -1;
-	while (++i < map->rows)
+
+	i = 0;
+	while (i < map->rows)
 	{
 		map->grid3d[i] = malloc(sizeof(t_point3d) * map->cols);
 		map->grid2d[i] = malloc(sizeof(t_point2d) * map->cols);
-		if (!(map->grid2d[i]) || !(map->grid3d[i]))
-		{
-			if (i + 1 < map->rows)
-			{
-				map->grid3d[i + 1] = NULL;
-				map->grid2d[i + 1] = NULL;
-			}
-			free_map(map);
+		if (!map->grid3d[i] || !map->grid2d[i])
 			handle_error("Malloc fail");
-		}
+		i++;
 	}
 }
 
@@ -76,7 +67,7 @@ static t_map	*input_parser(char *filename)
 	map_init(map);
 	get_map_size(fd, map);
 	close(fd);
-	malloc_grid(map);
+	allocate_map(map);
 	map->interval = ft_min(WIDTH / map->cols, HEIGHT / map->rows) / 2;
 	map->interval = ft_max(2, map->interval);
 	fd = open(filename, O_RDONLY, 0777);
@@ -91,13 +82,13 @@ static t_fdf	*fdf_init(char *filename)
 
 	fdf.map = input_parser(filename);
 	fdf.mlx = mlx_init(WIDTH, HEIGHT, "FdF", true);
-	if (!fdf.mlx)
+	if (fdf.mlx == NULL)
 	{
 		free_map(fdf.map);
 		handle_error(mlx_strerror(mlx_errno));
 	}
 	fdf.image = mlx_new_image(fdf.mlx, WIDTH, HEIGHT);
-	if (!fdf.image)
+	if (fdf.image == NULL)
 	{
 		free_map(fdf.map);
 		mlx_close_window(fdf.mlx);
@@ -106,13 +97,12 @@ static t_fdf	*fdf_init(char *filename)
 	return (&fdf);
 }
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
 	t_fdf		*fdf;
 
-	if (ac != 2 || !is_valid(av[1]))
-		handle_error(FORMAT);
-	fdf = fdf_init(av[1]);
+	check_input(argc, argv[1]);
+	fdf = fdf_init(argv[1]);
 	render_image(fdf);
 	if (mlx_image_to_window(fdf->mlx, fdf->image, 0, 0) == -1)
 	{

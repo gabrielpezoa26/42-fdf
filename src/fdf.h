@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/02 18:13:33 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 21:42:57 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ void		zoom_handler(double x_delta, double y_delta, void *data);
 void		fill_image(mlx_image_t *image);
 int			is_valid(const char *filename);
 void		make_upper(unsigned int i, char *c);
+void			check_input(int argc, char *filename);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:59:41 by gabriel           #+#    #+#             */
-/*   Updated: 2025/02/02 18:00:59 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 21:54:23 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	convert_to_2d(t_map *map, int i, int j)
 			* sin(map->beta) + map->y_offset);
 }
 
-static void	draw_line(t_fdf *fdf, int x, int y)
+static void	render_line(t_fdf *fdf, int x, int y)
 {
 	if (y == 0 && x == 0)
 		convert_to_2d(fdf->map, y, x);
@@ -90,6 +90,6 @@ void	render_image(void *data)
 	{
 		j = -1;
 		while (++j < fdf->map->cols)
-			draw_line(fdf, j, i);
+			render_line(fdf, j, i);
 	}
 }

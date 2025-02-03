@@ -6,12 +6,17 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 18:36:28 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/02 17:50:07 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 21:42:42 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+void	check_input(int argc, char *input)
+{
+	if (argc != 2 || !is_valid(input))
+		handle_error(FORMAT);
+}
 int	is_valid(const char *filename)
 {
 	int	len;
@@ -47,4 +52,3 @@ void	fill_image(mlx_image_t *image)
 		i++;
 	}
 }
-
