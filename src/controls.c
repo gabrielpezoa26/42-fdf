@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 22:12:25 by gabriel           #+#    #+#             */
-/*   Updated: 2025/02/02 17:57:05 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 23:30:42 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,16 @@ void	zoom_handler(double x_delta, double y_delta, void *data)
 	x_delta++;
 }
 
-void	ft_hook(void *data)
+void	mv_controls(void *data)
 {
 	t_fdf	*fdf;
 
 	fdf = (t_fdf *)data;
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_ESCAPE))
+	{
 		mlx_close_window(fdf->mlx);
+		ft_printf("Exit");
+	}
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_LEFT))
 		fdf->map->x_offset -= 5;
 	if (mlx_is_key_down(fdf->mlx, MLX_KEY_RIGHT))

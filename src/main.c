@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 17:00:17 by gabriel           #+#    #+#             */
-/*   Updated: 2025/02/02 22:24:55 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 23:27:04 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 		mlx_close_window(fdf->mlx);
 		handle_error(mlx_strerror(mlx_errno));
 	}
-	mlx_loop_hook(fdf->mlx, &ft_hook, fdf);
+	mlx_loop_hook(fdf->mlx, &mv_controls, fdf);
 	mlx_loop_hook(fdf->mlx, &render_image, fdf);
 	mlx_loop(fdf->mlx);
 	mlx_terminate(fdf->mlx);
