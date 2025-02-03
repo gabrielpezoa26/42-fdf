@@ -6,33 +6,53 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 22:10:44 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/02 22:48:41 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 22:56:16 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void allocate_map(t_map *map)
+static void	free_partial_rows(t_map *map, int i)
 {
-	int i;
+	while (--i >= 0)
+	{
+		free(map->grid3d[i]);
+		free(map->grid2d[i]);
+	}
+	free(map->grid3d);
+	free(map->grid2d);
+}
 
+static void	allocate_map(t_map *map)
+{
+	int	i;
+
+	ft_printf("DEBUG: Allocating map - Rows: %d, Cols: %d\n", map->rows, map->cols);
 	map->grid3d = malloc(sizeof(t_point3d *) * map->rows);
 	map->grid2d = malloc(sizeof(t_point2d *) * map->rows);
 	if (!map->grid3d || !map->grid2d)
 	{
+		free(map->grid3d);
+		free(map->grid2d);
 		handle_error("Malloc fail");
-		destroy_map(map);  //teste
 	}
+	ft_printf("DEBUG: Grid allocated - grid3d: %p, grid2d: %p\n", (void *)map->grid3d, (void *)map->grid2d);
 	i = 0;
 	while (i < map->rows)
 	{
 		map->grid3d[i] = malloc(sizeof(t_point3d) * map->cols);
 		map->grid2d[i] = malloc(sizeof(t_point2d) * map->cols);
 		if (!map->grid3d[i] || !map->grid2d[i])
+		{
+			free_partial_rows(map, i);
 			handle_error("Malloc fail");
+		}
+		ft_printf("DEBUG: Row %d allocated - grid3d[%d]: %p, grid2d[%d]: %p\n",
+			i, i, (void *)map->grid3d[i], i, (void *)map->grid2d[i]);
 		i++;
 	}
 }
+
 
 void	map_init(t_map *map)
 {

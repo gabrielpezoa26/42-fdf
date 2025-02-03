@@ -6,46 +6,36 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:59:41 by gabriel           #+#    #+#             */
-/*   Updated: 2025/02/02 22:07:38 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 23:04:26 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	prepare_line(t_line *line, t_point2d a, t_point2d b)
+static void	bresenham(mlx_image_t *image, t_point2d a, t_point2d b)
 {
-	line->delta_x = abs(b.x - a.x);
-	line->delta_y = abs(b.y - a.y);
-	line->step_x = 1;
-	line->step_y = 1;
-	if (a.x > b.x)
-		line->step_x = -1;
-	if (a.y > b.y)
-		line->step_y = -1;
-	line->error = line->delta_x - line->delta_y;
-}
-
-static void	line_to_pixels(mlx_image_t *image, t_point2d a, t_point2d b)
-{
+	int			error[2];
 	t_point2d	cur;
-	t_line		line;
 
 	cur.x = a.x;
 	cur.y = a.y;
-	prepare_line(&line, a, b);
+	error[0] = abs(b.x - a.x) - abs(b.y - a.y);
 	while (cur.x != b.x || cur.y != b.y)
 	{
 		if ((uint32_t)cur.x < image->width && (uint32_t)cur.y < image->height)
 			mlx_put_pixel(image, cur.x, cur.y, 0xFFFFFF);
-		if (2 * line.error > -line.delta_y)
+		error[1] = 2 * error[0];
+		if (error[1] > -abs(b.y - a.y))
 		{
-			line.error -= line.delta_y;
-			cur.x += line.step_x;
+			error[0] -= abs(b.y - a.y);
+			cur.x += (a.x < b.x);
+			cur.x -= (b.x < a.x);
 		}
-		if (2 * line.error < line.delta_x)
+		if (error[1] < abs(b.x - a.x))
 		{
-			line.error += line.delta_x;
-			cur.y += line.step_y;
+			error[0] += abs(b.x - a.x);
+			cur.y += (a.y < b.y);
+			cur.y -= (b.y < a.y);
 		}
 	}
 }
@@ -75,14 +65,14 @@ static void	render_line(t_fdf *fdf, int x, int y)
 	if (y + 1 < fdf->map->rows)
 	{
 		convert_to_2d(fdf->map, y + 1, x);
-		line_to_pixels(fdf->image, fdf->map->grid2d[y][x],
+		bresenham(fdf->image, fdf->map->grid2d[y][x],
 			fdf->map->grid2d[y + 1][x]);
 	}
 	if (x + 1 < fdf->map->cols)
 	{
 		if (y == 0)
 			convert_to_2d(fdf->map, y, x + 1);
-		line_to_pixels(fdf->image, fdf->map->grid2d[y][x],
+		bresenham(fdf->image, fdf->map->grid2d[y][x],
 			fdf->map->grid2d[y][x + 1]);
 	}
 }
