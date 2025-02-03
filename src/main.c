@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 17:00:17 by gabriel           #+#    #+#             */
-/*   Updated: 2025/02/02 22:14:33 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 22:24:55 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	render_image(fdf);
 	if (mlx_image_to_window(fdf->mlx, fdf->image, 0, 0) == -1)
 	{
-		free_map(fdf->map);
+		destroy_map(fdf->map);
 		mlx_close_window(fdf->mlx);
 		handle_error(mlx_strerror(mlx_errno));
 	}
@@ -29,6 +29,6 @@ int	main(int argc, char **argv)
 	mlx_loop_hook(fdf->mlx, &render_image, fdf);
 	mlx_loop(fdf->mlx);
 	mlx_terminate(fdf->mlx);
-	free_map(fdf->map);
+	destroy_map(fdf->map);
 	return (0);
 }

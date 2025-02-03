@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 22:10:44 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/02 22:18:11 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 22:48:41 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ static void allocate_map(t_map *map)
 	map->grid3d = malloc(sizeof(t_point3d *) * map->rows);
 	map->grid2d = malloc(sizeof(t_point2d *) * map->rows);
 	if (!map->grid3d || !map->grid2d)
+	{
 		handle_error("Malloc fail");
-
+		destroy_map(map);  //teste
+	}
 	i = 0;
 	while (i < map->rows)
 	{
@@ -84,13 +86,13 @@ t_fdf	*fdf_init(char *filename)
 	fdf.mlx = mlx_init(WIDTH, HEIGHT, "FdF", true);
 	if (fdf.mlx == NULL)
 	{
-		free_map(fdf.map);
+		destroy_map(fdf.map);
 		handle_error(mlx_strerror(mlx_errno));
 	}
 	fdf.image = mlx_new_image(fdf.mlx, WIDTH, HEIGHT);
 	if (fdf.image == NULL)
 	{
-		free_map(fdf.map);
+		destroy_map(fdf.map);
 		mlx_close_window(fdf.mlx);
 		handle_error(mlx_strerror(mlx_errno));
 	}

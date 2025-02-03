@@ -6,13 +6,13 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 21:36:21 by gabriel           #+#    #+#             */
-/*   Updated: 2025/02/02 17:53:40 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 22:28:29 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	free_tab(void **tab, size_t len)
+void	free_array(void **tab, size_t len)
 {
 	size_t	i;
 
@@ -25,32 +25,29 @@ void	free_tab(void **tab, size_t len)
 	free(tab);
 }
 
-void	free_map(t_map *map)
+void	destroy_map(t_map *map)
 {
-	if (!map)
+	if (map == NULL)
 		return ;
-	if (map->grid2d)
-		free_tab((void **)map->grid2d, map->rows);
-	if (map->grid3d)
-		free_tab((void **)map->grid3d, map->rows);
+	if (map->grid2d != NULL)
+		free_array((void **)map->grid2d, map->rows);
+	if (map->grid3d != NULL)
+		free_array((void **)map->grid3d, map->rows);
 	free(map);
+}
+
+void	abort_map(int fd, t_map *map, char *message)
+{
+	close(fd);
+	destroy_map(map);
+	handle_error(message);
 }
 
 void	handle_error(const char *message)
 {
 	if (errno == 0)
-	{
-		ft_putstr_fd("FdF: ", 2);
-		ft_putendl_fd((char *)message, 2);
-	}
+		ft_printf("FdF: %s\n", message);
 	else
 		perror("FdF");
 	exit(1);
-}
-
-void	error_map(int fd, t_map *map, char *message)
-{
-	close(fd);
-	free_map(map);
-	handle_error(message);
 }

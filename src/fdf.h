@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/02 22:18:16 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/02 22:26:37 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,10 @@ void		map_parser(int fd, t_map *map);
 void		get_map_size(int fd, t_map *map);
 
 //ERROR
-void		free_tab(void **ptr, size_t len);
-void		free_map(t_map *map);
+void		free_array(void **ptr, size_t len);
+void		destroy_map(t_map *map);
 void		handle_error(const char *message);
-void		error_map(int fd, t_map *map, char *message);
+void		abort_map	(int fd, t_map *map, char *message);
 
 //RENDER
 void		convert_to_2d(t_map *map, int row, int col);
