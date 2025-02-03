@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/02 23:27:11 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/03 17:37:27 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,6 @@
 # define HEIGHT				1080
 # define FORMAT				" Corret format:\n./fdf maps/filename.fdf"
 # define INVALID_MAP		"Map is invalid"
-
-typedef struct s_line
-{
-	int	delta_x;
-	int	delta_y;
-	int	step_x;
-	int	step_y;
-	int	error;
-}	t_line;
 
 typedef struct s_point2d
 {
@@ -89,7 +80,7 @@ void		get_map_size(int fd, t_map *map);
 void		free_array(void **ptr, size_t len);
 void		destroy_map(t_map *map);
 void		handle_error(const char *message);
-void		abort_map	(int fd, t_map *map, char *message);
+void		abort_map(int fd, t_map *map, char *message);
 
 //RENDER
 void		convert_to_2d(t_map *map, int row, int col);

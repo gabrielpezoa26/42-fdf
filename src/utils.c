@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 18:36:28 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/02 21:42:42 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/03 17:17:15 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	check_input(int argc, char *input)
 	if (argc != 2 || !is_valid(input))
 		handle_error(FORMAT);
 }
+
 int	is_valid(const char *filename)
 {
 	int	len;

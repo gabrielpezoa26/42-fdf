@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 16:24:58 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/02 22:34:50 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/03 17:11:26 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	parse_row(int fd, t_map *map, char **tab, int i)
 		point->z = (double)ft_atoi(tab[j]) * (map->interval);
 		map->high = ft_max(map->high, point->z);
 		map->low = ft_min(map->low, point->z);
-		point->mapcolor = 0xFFFFFF;
+		point->mapcolor = 0xFFFFFFFF;
 	}
 }
 

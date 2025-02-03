@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 22:10:44 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/02 22:56:16 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/03 16:33:45 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	allocate_map(t_map *map)
 {
 	int	i;
 
-	ft_printf("DEBUG: Allocating map - Rows: %d, Cols: %d\n", map->rows, map->cols);
+	ft_printf("Allocating map, Rows: %d, Cols: %d\n", map->rows, map->cols);
 	map->grid3d = malloc(sizeof(t_point3d *) * map->rows);
 	map->grid2d = malloc(sizeof(t_point2d *) * map->rows);
 	if (!map->grid3d || !map->grid2d)
@@ -36,7 +36,6 @@ static void	allocate_map(t_map *map)
 		free(map->grid2d);
 		handle_error("Malloc fail");
 	}
-	ft_printf("DEBUG: Grid allocated - grid3d: %p, grid2d: %p\n", (void *)map->grid3d, (void *)map->grid2d);
 	i = 0;
 	while (i < map->rows)
 	{
@@ -47,21 +46,18 @@ static void	allocate_map(t_map *map)
 			free_partial_rows(map, i);
 			handle_error("Malloc fail");
 		}
-		ft_printf("DEBUG: Row %d allocated - grid3d[%d]: %p, grid2d[%d]: %p\n",
+		ft_printf("Row %d allocated - grid3d[%d]: %p, grid2d[%d]: %p\n",
 			i, i, (void *)map->grid3d[i], i, (void *)map->grid2d[i]);
 		i++;
 	}
 }
 
-
 void	map_init(t_map *map)
 {
 	map->alpha = 0.46373398 / 2;
 	map->beta = 0.46373398;
-
 	map->x_offset = WIDTH / 2;
 	map->y_offset = HEIGHT / 2;
-	
 	map->zoom = 0.8;
 	map->zscale = 0.8;
 	map->high = INT_MIN;

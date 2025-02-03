@@ -6,10 +6,11 @@
 #    By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/09 14:04:57 by gcesar-n          #+#    #+#              #
-#    Updated: 2025/02/03 13:11:50 by gabriel          ###   ########.fr        #
+#    Updated: 2025/02/03 17:26:32 by gabriel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = fdf
 CC = cc
 CFLAGS = -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
 INCLUDES = -I ./src -I ./MLX42/include -I ./MLX42/include/MLX42 -I ./libft
