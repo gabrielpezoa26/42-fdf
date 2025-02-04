@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/03 18:07:59 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/04 16:44:11 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ void		destroy_map(t_map *map);
 void		handle_error(const char *message);
 void		abort_map(int fd, t_map *map, char *message);
 
+
 //RENDER
 void		convert_to_2d(t_map *map, int row, int col);
 void		render_image(void *data);
-
 //CONTROLS
 void		mv_controls(void *data);
 void		zoom_handler(double x_delta, double y_delta, void *data);
