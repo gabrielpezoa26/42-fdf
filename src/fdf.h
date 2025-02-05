@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/05 11:06:59 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/05 11:36:05 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void		convert_to_2d(t_map *map, int row, int col);
 void		render_image(void *data);
 //CONTROLS
 void		mv_controls(void *data);
-void		zoom_handler(double x_delta, double y_delta, void *data);
+// void		zoom_handler(double x_delta, double y_delta, void *data);
 
 //UTILS
 void		fill_image(mlx_image_t *image);
