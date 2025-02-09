@@ -6,7 +6,7 @@
 /*   By: gabriel <gabriel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 17:00:17 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/05 11:41:35 by gabriel          ###   ########.fr       */
+/*   Updated: 2025/02/09 19:23:10 by gabriel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_fdf		*fdf;
+	t_fdf	*fdf;
 
 	check_input(argc, argv[1]);
 	fdf = fdf_init(argv[1]);
