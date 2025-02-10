@@ -6,7 +6,7 @@
 /*   By: gcesar-n <gcesar-n@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:06:57 by gcesar-n          #+#    #+#             */
-/*   Updated: 2025/02/10 14:06:41 by gcesar-n         ###   ########.fr       */
+/*   Updated: 2025/02/10 18:13:46 by gcesar-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ void		convert_to_2d(t_map *map, int row, int col);
 void		render_image(void *data);
 //CONTROLS
 void		mv_controls(void *data);
-// void		zoom_handler(double x_delta, double y_delta, void *data);
 
 //UTILS
 void		fill_image(mlx_image_t *image);
